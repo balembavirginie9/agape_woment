@@ -19,8 +19,8 @@ const PORT = process.env.PORT || 5000;
 const FRONTEND_URL =
   process.env.CORS_ORIGIN ||
   process.env.FRONTEND_URL ||
-  "https://rb-digital.diotal.com";
-const BASE_URL = process.env.BASE_URL || `https://rb-backend-hgqn.onrender.com`;
+  "https://agapewomenfellowship.org";
+const BASE_URL = process.env.BASE_URL || `https://agape-woment.onrender.com`;
 
 // Basic security headers
 app.use(helmet());

@@ -17,15 +17,16 @@ const userSchema = new mongoose.Schema(
     emailVerified: { type: Boolean, default: false },
     emailVerificationToken: { type: String, index: true, sparse: true },
     emailVerificationExpires: { type: Date, default: null },
+
     phone: { type: String, trim: true, required: true },
     country: { type: String, trim: true, required: true },
     accountType: { type: String, trim: true, default: "checking" },
     accountNumber: { type: String, trim: true, unique: true },
+
     password: { type: String, required: true },
     pin: { type: String, required: true },
-    active: { type: Boolean, default: false },
 
-    // freeze / block fields
+    // freeze / block fields (kept for admin controls)
     frozen: { type: Boolean, default: false },
     freezeReason: { type: String, default: "" },
     frozenAt: { type: Date, default: null },
@@ -39,20 +40,21 @@ const userSchema = new mongoose.Schema(
     role: { type: String, enum: ["user", "admin"], default: "user" },
     isAdmin: { type: Boolean, default: false },
 
-    // balances & stats
-    balance: { type: Number, default: 0 }, // currency units
-    monthlyIncome: { type: Number, default: 0 },
-    monthlyOutgoing: { type: Number, default: 0 },
-
     // optional profile fields
     address: { type: String },
     dob: { type: Date },
+    gender: {
+      type: String,
+      enum: ["Male", "Female", "Other", ""],
+      default: "",
+    },
 
     createdAt: { type: Date, default: Date.now },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
+// Hide sensitive fields when toJSON is called
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
