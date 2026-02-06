@@ -1,0 +1,35 @@
+# dependency directories
+node_modules/
+**/node_modules/
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# build outputs
+dist/
+build/
+frontend/build/
+frontend/dist/
+
+# user/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# uploads / runtime files
+uploads/
+**/uploads/
+
+# OS / misc
+*.swp
+coverage/
+.env
